@@ -13,15 +13,20 @@ import { TbWorld } from "react-icons/tb";
 
 
 function Sidebar({isLogin}) {
+
+  const [isLibraryActive, setIsLibraryActive] = useState(true)
+
+
   return (
     <ResizableBox
-    width={isLogin ? 360 : 260}
-    maxConstraints={[500]}
+    width={isLogin && !isLibraryActive ? 88 : 300}
+    maxConstraints={isLogin ? [1400] : [550]}
+    minConstraints={isLogin ? [88] : [250]}
     axis="x"
     >
       <div className={isLogin ?  "sideBar bg-black h-full p-2 border-r-[0.5px] border-transparent" : "sideBar bg-black h-full p-6 border-r-[0.5px] border-transparent"}>
         {!isLogin && <img src={logo} alt="" />}
-        <Menu isLogin={isLogin} />
+        <Menu isLogin={isLogin} isLibraryActive={isLibraryActive} setIsLibraryActive={setIsLibraryActive} />
 
         <ul className={isLogin ? "hidden" : "text-inactive-text-color mt-6 flex flex-col gap-3 text-[0.825rem] leading-4 font-[700]"}>
           <li className="" >

@@ -18,8 +18,8 @@ body {
 .navlink-search.active img{
   content: url("../src/assets/images/search-active.png");
 }
-.navlink-library.active img{
-  content: url("../src/assets/images/library-active.png");
+.navlink-library.inactive img{
+  content: url("../src/assets/images/library-inactive.png");
 }
 
 
