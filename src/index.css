@@ -11,3 +11,39 @@
 body {
     background-color: #121212;
 }
+
+.navlink-home.active img{
+  content: url("../src/assets/images/home-active.png");
+}
+.navlink-search.active img{
+  content: url("../src/assets/images/search-active.png");
+}
+.navlink-library.active img{
+  content: url("../src/assets/images/library-active.png");
+}
+
+
+.react-resizable {
+  position: relative;
+}
+.react-resizable-handle {
+  position: absolute;
+  right: -3px;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  border-right: 1px solid transparent;
+}
+
+
+.react-resizable-handle:hover{
+  border-color: grey;
+}
+
+.react-resizable-handle-se {
+  bottom: 0;
+  right: 0;
+  cursor: ew-resize;
+}
+
+
