@@ -20,8 +20,8 @@ function Sidebar({isLogin}) {
   return (
     <ResizableBox
     width={isLogin && !isLibraryActive ? 88 : 300}
-    maxConstraints={isLogin ? [1400] : [550]}
-    minConstraints={isLogin ? [88] : [250]}
+    maxConstraints={isLogin ? [600] : [450]}
+    minConstraints={isLogin && !isLibraryActive ? [88] : [280]}
     axis="x"
     >
       <div className={isLogin ?  "sideBar bg-black h-full p-2 border-r-[0.5px] border-transparent" : "sideBar bg-black h-full p-6 border-r-[0.5px] border-transparent"}>

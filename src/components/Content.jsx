@@ -1,17 +1,17 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./content/Home";
 import Search from "./content/Search";
-import Library from "./content/Library";
+
+import { useLocation } from "react-router-dom";
 
 function Content() {
+  const location = useLocation();
   return (
-    <main className="relative h-full z-20 rounded-b bg-[#121212]">
-      <div className="w-full h-80 -z-10 bg-gradient-to-b from-[#1F1F1F] to-transparent absolute -top-[60px]"></div>
-      <div className=" z-50 ">
+    <main className="h-full z-20 rounded-b bg-[#121212]">
+      <div className=" ">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/library" element={<Library />} />
         </Routes>
       </div>
     </main>
