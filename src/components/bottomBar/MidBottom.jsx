@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { Icon } from "../../assets/icons";
-import { useAudio } from "react-use";
+
 import CustomTrack from "./CustomTrack";
 import { secondsToTime } from "../../utils";
 
-function MidBottom() {
-  const [audio, state, controls, ref] = useAudio({
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-  });
+function MidBottom({ audio , state , controls}) {
+  
 
   return (
     <div className=" flex flex-col w-[40%] max-w-3xl">

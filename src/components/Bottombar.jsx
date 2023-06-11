@@ -1,12 +1,46 @@
+import { useMemo } from "react";
 import LeftBottom from "./bottomBar/LeftBottom"
 import MidBottom from "./bottomBar/MidBottom"
 import RightBottom from "./bottomBar/RightBottom"
-
+import { useAudio } from "react-use";
+import { useDispatch, useSelector } from "react-redux";
+import { setControls } from "../stores/player";
+import { useEffect } from "react";
 
 
 function Bottombar({isLogin}) {
+  
+  
+  
+  const dispatch = useDispatch()
+  const {current} = useSelector(state => state.player)
+  
+  const [audio, state, controls, ref] = useAudio({
+    src: current?.src
+  });
+  
+  useEffect(() => {
+    dispatch(setControls(controls))
+}, [])
+  useEffect(() => {
+    controls.play()
+}, [current])
+  
 
-if (!isLogin) {
+  const volumeIcon = useMemo(() => {
+    if (state.volume == 0 || state.muted) {
+      return "volumeMuted"
+    }
+    if (!state.muted && state.volume < 0.3) {
+      return "volumeLow"
+    }
+    if (!state.muted && state.volume < 0.6) {
+      return "volumeNormal"
+    }
+    return "volumeFull"
+  }, [state.volume,state.muted])
+
+  if (!isLogin) {
   return (
     <div className="h-[77px] text-white flex justify-between items-center cursor-pointer bg-gradient-to-r from-[#AF2997] to-[#509BF5]">
       <div className=" pl-4">
@@ -20,8 +54,8 @@ if (!isLogin) {
   return (
     <div className="h-[75px] pb-4 pt-2 px-4 text-white flex justify-between items-center bg-black">
         <LeftBottom />
-        <MidBottom />
-        <RightBottom />
+        <MidBottom audio={audio} state={state} controls={controls} />
+        <RightBottom state={state} controls={controls} volumeIcon={volumeIcon} />
     </div>
   )
 }
