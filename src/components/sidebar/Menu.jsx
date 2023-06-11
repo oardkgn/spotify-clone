@@ -8,13 +8,13 @@ import LibraryActiveLogo from "../../assets/images/library-active.png";
 import LibraryInactiveHoverLogo from "../../assets/images/library-inactive-hover.png";
 import { NavLink } from "react-router-dom";
 import { Icon } from "../../assets/icons";
-import { BiRightArrowAlt } from "react-icons/bi";
 import { FiSearch } from "react-icons/fi";
 import { GoTriangleDown } from "react-icons/go";
 import { BsCheck2 } from "react-icons/bs";
 import { useState } from "react";
+import LibraryContent from "./LibraryContent";
 
-function menu({ isLogin, isLibraryActive , setIsLibraryActive }) {
+function menu({ isLogin, isLibraryActive, setIsLibraryActive }) {
   const [sortBy, setSortBy] = useState("Recents");
 
   function toggleDropDown() {
@@ -24,7 +24,7 @@ function menu({ isLogin, isLibraryActive , setIsLibraryActive }) {
   }
 
   return (
-    <div className="h-[calc(100%-178px)] pb-2">
+    <div className="h-[calc(100%-162px)] pb-2">
       <ul
         className={
           " text-inactive-text-color text-[0.8rem] leading-4 font-bold flex flex-col gap-2" +
@@ -101,7 +101,7 @@ function menu({ isLogin, isLibraryActive , setIsLibraryActive }) {
             </NavLink>
           </li>
         </div>
-        <div className="px-6 py-4 bg-[#121212] rounded-t mt-2">
+        <div className="px-6 shadow-lg shadow-black py-2 bg-[#121212] rounded-t mt-2">
           <li
             className={
               isLogin
@@ -111,10 +111,9 @@ function menu({ isLogin, isLibraryActive , setIsLibraryActive }) {
           >
             <a
               href="#"
-              className="w-[8000px] flex items-center gap-4 hover:text-white transition-all ease-linear  duration-150"
+              className="w-[8000px] flex  items-center gap-4 hover:text-white transition-all ease-linear  duration-150"
               onClick={() => {
-
-                setIsLibraryActive(!isLibraryActive)
+                setIsLibraryActive(!isLibraryActive);
 
                 document
                   .querySelector(".navlink-library")
@@ -134,7 +133,6 @@ function menu({ isLogin, isLibraryActive , setIsLibraryActive }) {
                     .classList.add("opacity-0");
                 }
               }}
-              
             >
               <img
                 src={isLogin ? LibraryActiveLogo : LibraryInactiveLogo}
@@ -146,12 +144,12 @@ function menu({ isLogin, isLibraryActive , setIsLibraryActive }) {
 
             {isLogin && isLibraryActive ? (
               <>
-                <div className="flex gap-4 absolute right-1">
+                <div className="flex text-inactive-text-color gap-5 absolute right-0">
                   <button>
-                    <Icon name="plus" size={20} />
+                    <Icon name="plus" size={16} />
                   </button>
                   <button>
-                    <BiRightArrowAlt className=" text-[28px]" />
+                    <Icon name="arrowRight" size={16} />
                   </button>
                 </div>
               </>
@@ -191,30 +189,29 @@ function menu({ isLogin, isLibraryActive , setIsLibraryActive }) {
         </div>
       </ul>
       {isLogin && isLibraryActive ? (
-        
-          <div className="h-full bg-[#121212] px-4 py-3 rounded-b">
-            <div className="flex gap-2 text-[0.82rem] font-[600]">
-              <button className="py-[0.4rem] px-3 rounded-full bg-[#2A2A2A]">
-                Playlists
-              </button>
-              <button className="py-[0.4rem] px-3 rounded-full bg-[#2A2A2A]">
-                Albums
-              </button>
-            </div>
-            <div className="mt-2 flex items-center justify-between">
+        <div className="h-full bg-[#121212] pl-4 py-3 rounded-b">
+          <div className="flex gap-2 pb-3 text-[0.82rem] font-[600]">
+            <button className="py-[0.4rem] px-3 rounded-full bg-[#2A2A2A]">
+              Playlists
+            </button>
+            <button className="py-[0.4rem] px-3 rounded-full bg-[#2A2A2A]">
+              Albums
+            </button>
+          </div>
+            <div className=" flex items-center  pr-2 justify-between">
               <button>
                 <FiSearch className="p-2 text-[34px] text-inactive-text-color transition-all hover:text-white hover:bg-[#2A2A2A] rounded-full" />
               </button>
-              <div className="relative">
+              <div className="relative text-white">
                 <button
                   onClick={() => toggleDropDown()}
                   className="flex items-center text-inactive-text-color gap-2 text-[0.84rem] transition-all hover:text-white font-[700]"
                 >
-                  {sortBy}{" "}
+                  {sortBy}
                   <GoTriangleDown className=" transition-all dropDownArrow" />
                 </button>
-                <div className="absolute top-8 dropDown z-30 w-40  bg-[#2A2A2A] rounded transition-all h-0 overflow-hidden">
-                  <ul className="flex flex-col font-[600] px-1 pt-4 pb-1 text-[0.86rem]">
+                <div className="absolute top-8 dropDown w-40 z-[9999] bg-[#2A2A2A] rounded transition-all h-0 overflow-hidden">
+                  <ul className="flex flex-col font-[600] z-[9999] px-1 pt-4 pb-1 text-[0.86rem] ">
                     <li className="text-[0.72rem] text-inactive-text-color px-4 font-bold mb-1">
                       Sort by
                     </li>
@@ -229,10 +226,10 @@ function menu({ isLogin, isLibraryActive , setIsLibraryActive }) {
                           (sortBy == "Recents" && " text-brand-color")
                         }
                       >
-                        Recents{" "}
+                        Recents
                         {sortBy == "Recents" && (
                           <BsCheck2 className="text-[24px] font-semibold" />
-                        )}{" "}
+                        )}
                       </button>
                     </li>
                     <li>
@@ -290,13 +287,22 @@ function menu({ isLogin, isLibraryActive , setIsLibraryActive }) {
                 </div>
               </div>
             </div>
-            <div className=" library bg-[#121212] rounded-b">asdasd</div>
+          <div className=" h-[calc(100%-36px)] z-40 overflow-y-auto overflow-x-hidden">
+            <div className=" library bg-[#121212] rounded-b">
+              <LibraryContent active={isLibraryActive} />
+            </div>
           </div>
-        
+        </div>
       ) : (
         <></>
       )}
-      {isLogin && !isLibraryActive ? <div className="library h-full bg-[#121212] rounded-b">asdasd</div> : ""}
+      {isLogin && !isLibraryActive ? (
+        <div className="library overflow-y-auto flex justify-center h-full bg-[#121212] rounded-b">
+          <LibraryContent active={isLibraryActive} />
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

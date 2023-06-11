@@ -12,7 +12,7 @@ const LogoIcon = ({size}) => {
 const PlusIcon = ({size}) => {
 	return (
 		<svg viewBox="0 0 16 16" width={size} height={size} xmlns="http://www.w3.org/2000/svg">
-			<path d="M14 7H9V2H7v5H2v2h5v5h2V9h5z" fill="currentColor"/>
+			<path d="M 15.25 8 a 0.75 0.75 0 0 1 -0.75 0.75 H 8.75 v 5.75 a 0.75 0.75 0 0 1 -1.5 0 V 8.75 H 1.5 a 0.75 0.75 0 0 1 0 -1.5 h 5.75 V 1.5 a 0.75 0.75 0 0 1 1.5 0 v 5.75 h 5.75 a 0.75 0.75 0 0 1 0.75 0.75 Z" fill="currentColor"/>
 			<path fill="none" d="M0 0h16v16H0z"/>
 		</svg>
 	)
@@ -247,6 +247,25 @@ const LyricsIcon = ({size}) => {
 	)
 }
 
+const ArrowRightIcon = ({size}) => {
+	return (
+		<svg viewBox="0 0 16 16" width={size} height={size} xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M7.19 1A.749.749 0 0 1 8.47.47L16 7.99l-7.53 7.521a.75.75 0 0 1-1.234-.815.75.75 0 0 1 .174-.243l5.72-5.714H.75a.75.75 0 1 1 0-1.498h12.38L7.41 1.529a.749.749 0 0 1-.22-.53z"
+				fill="currentColor"/>
+		</svg>
+	)
+}
+const pinIcon = ({size}) => {
+	return (
+		<svg viewBox="0 0 16 16" width={size} height={size} xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M8.822.797a2.72 2.72 0 0 1 3.847 0l2.534 2.533a2.72 2.72 0 0 1 0 3.848l-3.678 3.678-1.337 4.988-4.486-4.486L1.28 15.78a.75.75 0 0 1-1.06-1.06l4.422-4.422L.156 5.812l4.987-1.337L8.822.797z"
+				fill="currentColor"/>
+		</svg>
+	)
+}
+
 const Icon = ({name, size = 24}) => {
 
 	const icons = {
@@ -276,7 +295,9 @@ const Icon = ({name, size = 24}) => {
 		volumeFull: VolumeFullIcon,
 		lyrics: LyricsIcon,
 		arrowLeft: ArrowLeftIcon,
-		logo: LogoIcon
+		arrowRight: ArrowRightIcon,
+		logo: LogoIcon,
+		pin : pinIcon
 	}
 
 	const Component = icons[name]

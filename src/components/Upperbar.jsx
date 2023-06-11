@@ -42,7 +42,7 @@ function Upperbar({ isLogin , showUpper }) {
           <Icon name="next" size={18} />
         </button>
       </div>
-      {location.pathname == "/search" && <div className="w-full relative flex items-center pl-2"><FiSearch className="absolute left-5 text-[18px] text-[#cdcdcd]"/><input placeholder="What do you want to listen to?" className="bg-[#262626] w-[360px] text-[0.82rem] text-white font-semibold min-[300px] pl-9 pr-4 py-3 rounded-full" type="text" /></div>}
+      {location.pathname == "/search" && <div className="w-full relative flex items-center pl-2"><FiSearch className="absolute left-5 text-[18px] text-[#cdcdcd]"/><input autoFocus={true} placeholder="What do you want to listen to?" className="bg-[#262626] w-[360px] text-[0.82rem] text-white font-semibold min-[300px] pl-9 pr-4 py-3 rounded-full" type="text" /></div>}
       {!isLogin && (
         <div>
           <Navbar />
@@ -50,7 +50,7 @@ function Upperbar({ isLogin , showUpper }) {
       )}
       {isLogin && (
         <div className="flex flex-shrink-0 gap-2 items-center w-[262px]">
-          <button className="bg-white py-[0.4rem] px-4 text-[0.9rem] rounded-full text-black font-medium transition-all hover:scale-110">
+          <button className={`${location.pathname == "/search" && "invisible"} bg-white py-[0.4rem] px-4 text-[0.9rem] rounded-full text-black font-medium transition-all hover:scale-110`}>
             Upgrade
           </button>
           <button className="flex items-center gap-1 text-[0.9rem] font-semibold bg-black py-[0.4rem] px-4 rounded-full transition-all hover:scale-110">

@@ -6,12 +6,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrent } from "../../../stores/player";
 
 function SectionItem({ item }) {
-  const {current} = useSelector( state => state.player);
+  const {current, playing, controls} = useSelector( state => state.player);
   const dispatch = useDispatch();
 
   const updateCurrent = () => {
-    dispatch(setCurrent(item));
+    if (current?.id === item.id) {
+      if (playing) {
+        controls.pause();
+      } else {
+        controls.play();
+      }
+    } else {
+      dispatch(setCurrent(item));
+    }
   };
+
+  const isCurrentItem = current?.id === item.id && playing;
 
   return (
     <div>
@@ -25,9 +35,9 @@ function SectionItem({ item }) {
             />
             <div
               onClick={updateCurrent}
-              className=" opacity-0 group-hover:opacity-100 group-hover:right-2 group-hover:bottom-2 transition-all hover:scale-105 duration-300 absolute -right-2 -bottom-2 bg-brand-color p-[0.8rem] shadow-xl shadow-black rounded-full"
+              className={`${!isCurrentItem ? "opacity-0" : "opacity-100"} group-hover:opacity-100 group-hover:right-2 group-hover:bottom-2 transition-all hover:scale-105 duration-300 absolute -right-2 -bottom-2 bg-brand-color p-[0.8rem] shadow-xl shadow-black rounded-full`}
             >
-              <Icon size={20} name={current.id == item.id ? "pause" : "play"} />
+              <Icon size={20} name={isCurrentItem ? "pause" : "play"} />
             </div>
           </div>
           <h5 className=" self-start mt-3 text-white font-bold">

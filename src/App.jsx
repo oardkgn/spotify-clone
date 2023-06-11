@@ -3,14 +3,12 @@ import Content from "./components/Content";
 import Bottombar from "./components/Bottombar";
 import Upperbar from "./components/Upperbar";
 import { useState } from "react";
-
 import { BrowserRouter } from "react-router-dom";
+import Gradient from "./components/Gradient";
 
 function App() {
   const [isLogin, setIsLogin] = useState(true);
   const [showUpper, setShowUpper] = useState(false);
-  
-
   if (isLogin) {
     document.querySelector("body").style.backgroundColor = "black";
   } else {
@@ -45,14 +43,7 @@ function App() {
                 
                 
               >
-                {location.pathname == "/search" ? (
-                  ""
-                ) : (
-                  <div
-                    id="gradient"
-                    className=" transition-all duration-500 ease-in w-full h-96 z-10 bg-gradient-to-b from-[#1F1F1F] to-transparent absolute top-0"
-                  ></div>
-                )}
+                <Gradient />
                 <Upperbar showUpper={showUpper} isLogin={isLogin} />
                 <Content />
               </div>

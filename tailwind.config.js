@@ -11,6 +11,9 @@ export default {
         'backGround': '#121212',
         'inactive-text-color': '#B3B3B3',
       },
+      boxShadow:{
+        coverShadow : "0 2px 4px 0 rgba(0,0,0,.2)"
+      }
     },
   },
   plugins: [],

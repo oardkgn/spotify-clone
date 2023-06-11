@@ -8,7 +8,7 @@ function Content() {
   const location = useLocation();
   return (
     <main className="h-full z-20 rounded-b bg-[#121212]">
-      <div className=" ">
+      <div className="">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
