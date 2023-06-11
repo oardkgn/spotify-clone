@@ -8,7 +8,7 @@ function Content({isLogin}) {
   const location = useLocation();
 
   return (
-    <main  className="content h-full z-20 rounded-b bg-[#121212]">
+    <main  className="content h-full max-w-[2000px] z-20 rounded-b bg-[#121212]">
       <div className="">
         <Routes>
           <Route path="/" element={<Home isLogin={isLogin} />} />
