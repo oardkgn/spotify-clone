@@ -101,7 +101,7 @@ function menu({ isLogin, isLibraryActive, setIsLibraryActive }) {
             </NavLink>
           </li>
         </div>
-        <div className="px-6 shadow-lg shadow-black py-2 bg-[#121212] rounded-t mt-2">
+        <div className="pl-6 pr-3 shadow-lg shadow-black py-2 bg-[#121212] rounded-t mt-2">
           <li
             className={
               isLogin
@@ -144,11 +144,11 @@ function menu({ isLogin, isLibraryActive, setIsLibraryActive }) {
 
             {isLogin && isLibraryActive ? (
               <>
-                <div className="flex text-inactive-text-color gap-5 absolute right-0">
-                  <button>
+                <div className="flex text-inactive-text-color gap-2 absolute right-0">
+                  <button className=" rounded-full  transition-all hover:bg-opacity-80 hover:text-white p-2 bg-[#505050] bg-opacity-0">
                     <Icon name="plus" size={16} />
                   </button>
-                  <button>
+                  <button onClick={()=>{}} className=" rounded-full transition-all hover:bg-opacity-80 hover:text-white p-2 bg-[#505050] bg-opacity-0">
                     <Icon name="arrowRight" size={16} />
                   </button>
                 </div>

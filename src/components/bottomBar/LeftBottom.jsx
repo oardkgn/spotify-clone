@@ -41,7 +41,7 @@ function LeftBottom() {
           </button>
         </div>
       )}
-      <div>
+      <div className=" w-fit min-w-[50px]">
         <LinesEllipsis
           text={current.title}
           maxLine="1"
@@ -60,7 +60,7 @@ function LeftBottom() {
         />
       </div>
 
-      <div className="flex gap-4 ml-6 text-inactive-text-color">
+      <div className="flex gap-4 ml-3 text-inactive-text-color">
         <div className=" transition-all hover:text-white cursor-pointer">
           <Icon name="heart" size={18} />
         </div>

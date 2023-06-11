@@ -6,6 +6,7 @@ import { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import Gradient from "./components/Gradient";
 
+
 function App() {
   const [isLogin, setIsLogin] = useState(true);
   const [showUpper, setShowUpper] = useState(false);

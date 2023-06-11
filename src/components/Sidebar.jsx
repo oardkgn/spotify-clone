@@ -16,11 +16,19 @@ function Sidebar({isLogin}) {
 
   const [isLibraryActive, setIsLibraryActive] = useState(true)
 
+  const resizeHandle = (event, {node, size, handle}) => {
+    if (!isLibraryActive && size.width > 130) {
+      setIsLibraryActive(true)
+    }else if(isLibraryActive && size.width == 280){
+      setIsLibraryActive(false)
+    }
+  }
 
   return (
     <ResizableBox
-    width={isLogin && !isLibraryActive ? 88 : 300}
+    width={isLogin && !isLibraryActive ? 88 : 340}
     maxConstraints={isLogin ? [600] : [450]}
+    onResize={resizeHandle}
     minConstraints={isLogin && !isLibraryActive ? [88] : [280]}
     axis="x"
     >
