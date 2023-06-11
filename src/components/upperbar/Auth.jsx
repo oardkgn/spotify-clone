@@ -2,8 +2,9 @@ import React from 'react'
 import {FaRegUser} from "react-icons/fa";
 import { Menu } from '@headlessui/react'
 import { Icon } from '../../assets/icons';
+import { NavLink } from "react-router-dom";
 
-function Auth() {
+function Auth({setIsLogin}) {
   return (
 
     <Menu as="nav" className="relative -mb-1 ">
@@ -76,12 +77,14 @@ function Auth() {
         <hr className=' border-[#444444]' />
         <Menu.Item className="py-3 px-3 rounded">
           {({ active }) => (
-            <a
+            <NavLink
+              onClick={() => {setIsLogin(false)}}
+              to="/"
               className={`${active && 'bg-[#3E3E3E]'}`}
               href="/account-settings"
             >
               Log out
-            </a>
+            </NavLink>
           )}
         </Menu.Item>
         

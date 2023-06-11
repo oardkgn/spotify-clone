@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Navbar() {
+function Navbar({setIsLogin}) {
   return (
    
     <div className='flex items-center h-full'>
@@ -10,8 +10,8 @@ function Navbar() {
             <li className='transition-all hover:text-white hover:scale-105'><a className='py-1' href="">Download</a></li>
         </ul>
         <ul className='flex items-center ml-8 gap-8 text-md font-semibold text-inactive-text-color'>
-            <li className='transition-all hover:text-white hover:scale-105'><a className='py-1' href="">Sign up</a></li>
-            <li className='py-3 px-8 cursor-pointer transition-all hover:scale-105 bg-white text-black rounded-full'><a href="">Log in</a></li>
+            <li className='transition-all hover:text-white hover:scale-105'><a className='py-1 whitespace-nowrap' href="">Sign up</a></li>
+            <li onClick={() => setIsLogin(true)} className='py-3 px-8 cursor-pointer transition-all hover:scale-105 bg-white text-black rounded-full'><button  className="whitespace-nowrap" >Log in</button></li>
         </ul>
     </div>
 

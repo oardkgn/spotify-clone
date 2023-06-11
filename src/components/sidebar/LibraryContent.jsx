@@ -19,7 +19,7 @@ function LibraryContent({ active }) {
               <p className="flex items-center gap-2">
                 <span className=" text-brand-color">
                   <Icon name="pin" size="12" />
-                </span>{" "}
+                </span>
                 <span className=" text-sm text-inactive-text-color font-medium">
                   Playlist • 2 songs
                 </span>

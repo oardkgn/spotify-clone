@@ -17,6 +17,7 @@ import LibraryContent from "./LibraryContent";
 function menu({ isLogin, isLibraryActive, setIsLibraryActive }) {
   const [sortBy, setSortBy] = useState("Recents");
 
+
   function toggleDropDown() {
     document.querySelector(".dropDown").classList.toggle("h-0");
     document.querySelector(".dropDown").classList.toggle("overflow-hidden");
@@ -24,7 +25,7 @@ function menu({ isLogin, isLibraryActive, setIsLibraryActive }) {
   }
 
   return (
-    <div className="h-[calc(100%-162px)] pb-2">
+    <div className={isLogin ? "h-[calc(100%-162px)] pb-2" : "menu"}>
       <ul
         className={
           " text-inactive-text-color text-[0.8rem] leading-4 font-bold flex flex-col gap-2" +
@@ -37,7 +38,7 @@ function menu({ isLogin, isLibraryActive, setIsLibraryActive }) {
           className={
             isLogin
               ? "bg-[#121212] text-inactive-text-color leading-4 font-bold py-4 px-6 flex flex-col gap-4 rounded"
-              : ""
+              : "text-inactive-text-color font-bold flex flex-col gap-3 text-sm rounded"
           }
         >
           <li className=" h-8 transition-all ease-linear duration-150 hover:text-white">
@@ -101,19 +102,21 @@ function menu({ isLogin, isLibraryActive, setIsLibraryActive }) {
             </NavLink>
           </li>
         </div>
-        <div className="pl-6 pr-3 shadow-lg shadow-black py-2 bg-[#121212] rounded-t mt-2">
+        <div className={isLogin && "pl-6 pr-3 shadow-lg shadow-black py-2 bg-[#121212] rounded-t mt-2"}>
           <li
             className={
               isLogin
                 ? "relative w-full navlink-library h-8 flex items-center overflow-visible text-inactive-text-color text-[1rem] font-bold"
-                : " h-8 transition-all ease-linear  duration-150 navlink-library hover:text-white"
+                : " h-8 transition-all mt-2 text-inactive-text-color font-bold text-sm ease-linear  duration-150 navlink-library"
             }
           >
             <a
               href="#"
-              className="w-[8000px] flex  items-center gap-4 hover:text-white transition-all ease-linear  duration-150"
+              className="w-[8000px] flex  items-center gap-4 transition-all ease-linear  duration-150"
               onClick={() => {
-                setIsLibraryActive(!isLibraryActive);
+                if (isLogin) {
+                  setIsLibraryActive(!isLibraryActive);
+                }
 
                 document
                   .querySelector(".navlink-library")
@@ -136,7 +139,7 @@ function menu({ isLogin, isLibraryActive, setIsLibraryActive }) {
             >
               <img
                 src={isLogin ? LibraryActiveLogo : LibraryInactiveLogo}
-                className=" w-[22px] mt-[2px]"
+                className=" w-[22px] mr-1 mt-[2px]"
                 alt="logo"
               />
               {isLibraryActive ? "Your Library" : <></>}
@@ -157,9 +160,9 @@ function menu({ isLogin, isLibraryActive, setIsLibraryActive }) {
               <></>
             )}
 
-            <div className="w-[230px] relative">
-              <div className="hidden opacity-0 z-20 libraryPop absolute w-80 p-4 text-white bg-[#0D72EA] rounded -top-9 -right-64 transition-all duration-300">
-                <div className="absolute bg-[#0D72EA] w-3 h-3 rotate-45 -left-[6px]"></div>
+            <div className="w-[230px] relative z-[999]">
+              <div className="hidden opacity-0 z-[999] libraryPop absolute w-80 p-4 text-white bg-[#0D72EA] rounded -top-9 -right-64 transition-all duration-300">
+                <div className="absolute z-[999] bg-[#0D72EA] w-3 h-3 rotate-45 -left-[6px]"></div>
                 <h3 className="text-lg font-bold mb-3">Enjoy Your Library</h3>
                 <p className="text-[0.9rem] font-semibold">
                   Log in to see saved songs,podcasts,artists <br /> and
@@ -287,7 +290,7 @@ function menu({ isLogin, isLibraryActive, setIsLibraryActive }) {
                 </div>
               </div>
             </div>
-          <div className=" h-[calc(100%-36px)] z-40 overflow-y-auto overflow-x-hidden">
+          <div className=" h-[365px] z-40 overflow-y-auto scrollbar scrollbar-track-transparent scrollbar-thumb-[#898989] overflow-x-hidden">
             <div className=" library bg-[#121212] rounded-b">
               <LibraryContent active={isLibraryActive} />
             </div>
@@ -297,7 +300,7 @@ function menu({ isLogin, isLibraryActive, setIsLibraryActive }) {
         <></>
       )}
       {isLogin && !isLibraryActive ? (
-        <div className="library overflow-y-auto flex justify-center h-full bg-[#121212] rounded-b">
+        <div className="library overflow-y-auto scrollbar scrollbar-track-transparent scrollbar-thumb-[#898989] flex justify-center h-full bg-[#121212] rounded-b">
           <LibraryContent active={isLibraryActive} />
         </div>
       ) : (

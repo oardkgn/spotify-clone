@@ -3,13 +3,13 @@ import categories from "../../data/categories";
 import SearchItem from "./search/SearchItem";
 import { Icon } from "../../assets/icons";
 
-function Search() {
+function Search({isLogin}) {
   return (
-    <div className="bg-[#121212] p-6">
+    <div className={isLogin ? "bg-[#121212] p-6" : "bg-[#121212] p-6 -z-20 h-[600px] scrollbar scrollbar-track-transparent scrollbar-thumb-[#454545] overflow-y-auto"}>
       <h1 className="text-[1.4rem] font-bold text-white tracking-tight">
         Browse all
       </h1>
-      <div className=" grid grid-cols-5 gap-6 mt-5 max-w-7xl">
+      <div className=" grid -z-20 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 mt-5 max-w-7xl">
         {categories.map((item) => (
           <SearchItem item={item} key={item.id} />
         ))}

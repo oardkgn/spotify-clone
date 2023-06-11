@@ -14,9 +14,11 @@ import { TbWorld } from "react-icons/tb";
 
 function Sidebar({isLogin}) {
 
+
   const [isLibraryActive, setIsLibraryActive] = useState(true)
 
   const resizeHandle = (event, {node, size, handle}) => {
+
     if (!isLibraryActive && size.width > 130) {
       setIsLibraryActive(true)
     }else if(isLibraryActive && size.width == 280){
@@ -29,11 +31,11 @@ function Sidebar({isLogin}) {
     width={isLogin && !isLibraryActive ? 88 : 340}
     maxConstraints={isLogin ? [600] : [450]}
     onResize={resizeHandle}
-    minConstraints={isLogin && !isLibraryActive ? [88] : [280]}
+    minConstraints={isLogin && !isLibraryActive ? [88] : [250]}
     axis="x"
     >
-      <div className={isLogin ?  "sideBar bg-black h-full p-2 border-r-[0.5px] border-transparent" : "sideBar bg-black h-full p-6 border-r-[0.5px] border-transparent"}>
-        {!isLogin && <img src={logo} alt="" />}
+      <div className={isLogin ?  "sideBar bg-black overflow-hidden h-full p-2 border-r-[0.5px] border-transparent" : "sideBar bg-black h-full p-6 border-r-[0.5px] border-transparent"}>
+        {!isLogin && <img className="mb-8" src={logo} alt="" />}
         <Menu isLogin={isLogin} isLibraryActive={isLibraryActive} setIsLibraryActive={setIsLibraryActive} />
 
         <ul className={isLogin ? "hidden" : "text-inactive-text-color mt-6 flex flex-col gap-3 text-[0.825rem] leading-4 font-[700]"}>
@@ -66,8 +68,8 @@ function Sidebar({isLogin}) {
               Create PLaylist
               
             </a>
-            <div className="w-[230px] relative">
-            <div className=" opacity-0 z-10 playListPop absolute w-80 p-4 text-white bg-[#0D72EA] rounded -top-9 -right-64 transition-all duration-300">
+            <div className="w-[230px] z-[999] relative">
+            <div className=" opacity-0 playListPop absolute w-80 p-4 text-white bg-[#0D72EA] rounded -top-9 -right-64 transition-all duration-300">
                 <div className="absolute bg-[#0D72EA] w-3 h-3 rotate-45 -left-[6px]"></div>
                 <h3 className="text-lg font-bold mb-3">Create a Playlist</h3>
                 <p className="text-[0.9rem] font-semibold">Log in to create and share playlists.</p>
@@ -111,7 +113,7 @@ function Sidebar({isLogin}) {
               <img src={LikedInactive} className="w-[24px] mt-1" alt="" /> Liked
               Songs
             </a>
-            <div className="w-[230px] relative">
+            <div className="w-[230px] z-[999] relative">
             <div className=" opacity-0 songsPop absolute w-80 p-4 text-white bg-[#0D72EA] rounded -top-9 -right-64 transition-all duration-300">
                 <div className="absolute bg-[#0D72EA] w-3 h-3 rotate-45 -left-[6px]"></div>
                 <h3 className="text-lg font-bold mb-3">Enjoy your Liked Songs</h3>

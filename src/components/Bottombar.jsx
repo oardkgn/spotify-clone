@@ -8,11 +8,12 @@ import { setControls, setPlaying } from "../stores/player";
 import { useEffect } from "react";
 
 function Bottombar({ isLogin }) {
+
   const dispatch = useDispatch();
   const { current } = useSelector((state) => state.player);
 
   const [audio, state, controls, ref] = useAudio({
-    src: current?.src,
+    src: isLogin ? current?.src : ""
   });
 
   useEffect(() => {
@@ -39,6 +40,7 @@ function Bottombar({ isLogin }) {
     }
     return "volumeFull";
   }, [state.volume, state.muted]);
+  
 
   if (!isLogin) {
     return (

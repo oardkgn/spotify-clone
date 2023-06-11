@@ -24,7 +24,7 @@ function SectionItem({ item }) {
   const isCurrentItem = current?.id === item.id && playing;
 
   return (
-    <div>
+    <div className=" max-w-[300px]">
       <NavLink key={item.id}>
         <div className=" group cursor-pointer p-4 transition-all duration-300 hover:bg-[#272727] bg-[#181818] flex flex-col items-center rounded">
           <div className="relative">

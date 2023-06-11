@@ -7,12 +7,11 @@ import { useLocation } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import { useState,useEffect } from "react";
 
-function Upperbar({ isLogin , showUpper }) {
+function Upperbar({ isLogin , showUpper , setIsLogin }) {
 
 
   const navigate = useNavigate();
   const location = useLocation();
-
 
   
 
@@ -21,7 +20,7 @@ function Upperbar({ isLogin , showUpper }) {
       className={
         isLogin
           ? "upperBar transition-all rounded-t h-[60px] sticky z-[100] top-0 px-5 flex justify-between  " + `${showUpper && "bg-[#121212]"}`
-          : "h-[60px] sticky top-0 px-5 bg-black bg-opacity-40 w-full flex justify-between"
+          : `h-[60px] sticky upperbar top-0 px-5 w-full bg-opacity-40 bg-black z-[100] flex justify-between ${showUpper && " bg-opacity-100"}` 
       }
     >
       <div className="flex items-center h-full gap-2">
@@ -45,7 +44,7 @@ function Upperbar({ isLogin , showUpper }) {
       {location.pathname == "/search" && <div className="w-full relative flex items-center pl-2"><FiSearch className="absolute left-5 text-[18px] text-[#cdcdcd]"/><input autoFocus={true} placeholder="What do you want to listen to?" className="bg-[#262626] w-[360px] text-[0.82rem] text-white font-semibold min-[300px] pl-9 pr-4 py-3 rounded-full" type="text" /></div>}
       {!isLogin && (
         <div>
-          <Navbar />
+          <Navbar setIsLogin={setIsLogin} />
         </div>
       )}
       {isLogin && (
@@ -57,7 +56,7 @@ function Upperbar({ isLogin , showUpper }) {
             <Icon size={18} name="download" />
             <span className=" break-keep -mt-1">Install App</span>
           </button>
-          <Auth />
+          <Auth setIsLogin={setIsLogin} />
         </div>
       )}
     </div>
